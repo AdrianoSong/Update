@@ -17,6 +17,7 @@ struct PostList: View {
     
     var tappedClose: (() -> Void)?
     
+    // swiftlint:disable force_unwrapping
     var body: some View {
         ZStack {
             Color.backgroundNeo

@@ -93,6 +93,7 @@ public class FeedListViewModel: ObservableObject {
         self.store.removeFeed(at: index)
     }
     
+    // swiftlint:disable force_unwrapping
     var detailPage: AnyView {
         if shouldOpenSettings {
             return AnyView(SettingsView(fetchContentTime: self.$store.fetchContentTime, notificationsEnabled: self.$store.notificationsEnabled, shouldOpenSettings: self.$store.shouldOpenSettings))

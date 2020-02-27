@@ -36,10 +36,10 @@ struct ProgressOnboardingContent: View {
                 
                 Graph(graphData: .constant((0...5).map { day in
                     let today = Date()
-                    let date = Calendar.current.date(byAdding: .day, value: -day, to: today)!
-                    let title = date.toString(format: "EEE")
+                    let date = Calendar.current.date(byAdding: .day, value: -day, to: today)
+                    let title = date?.toString(format: "EEE")
                     let titleFinal = day == 5 ? "Today" : title
-                    return GraphData(title: titleFinal, titleFormat: "%d posts", value: Int.random(in: 0 ..< 15))
+                    return GraphData(title: titleFinal ?? "no date", titleFormat: "%d posts", value: Int.random(in: 0 ..< 15))
                 }), barColor: .green, textColor: .white, showBars: $showBars)
                 
             ExpandableGoalCard(goalName: "Read all posts", showDetail: $showBars, goalPercentage: 90, info: .constant(GoalInfo(readTodayCount: 10, totalUnreadCount: 20)), type: .small)

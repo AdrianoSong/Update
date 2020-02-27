@@ -87,9 +87,9 @@ struct Graph_Previews: PreviewProvider {
     static var previews: some View {
         Graph(graphData: .constant((0...7).map { day in
             let today = Date()
-            let date = Calendar.current.date(byAdding: .day, value: -day, to: today)!
-            let title = date.toString(format: "EEE")
-            return GraphData(title: title, titleFormat: "%d posts", value: Int.random(in: 0 ..< 15))
+            let date = Calendar.current.date(byAdding: .day, value: -day, to: today)
+            let title = date?.toString(format: "EEE")
+            return GraphData(title: title ?? "no date", titleFormat: "%d posts", value: Int.random(in: 0 ..< 15))
         }), showBars: .constant(true))
     }
 }

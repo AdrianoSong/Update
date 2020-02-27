@@ -69,15 +69,15 @@ public class GoalsViewModel: ObservableObject {
         
         return (0...totalDays).map { day -> GraphData in
             let today = Date()
-            let date = Calendar.current.date(byAdding: .day, value: -1 * (totalDays - day), to: today)!
+            let date = Calendar.current.date(byAdding: .day, value: -1 * (totalDays - day), to: today)
             
             let title: String
             if day == totalDays {
                 title = "Today"
             } else {
-                title = date.toString(format: "EEE")
+                title = date?.toString(format: "EEE") ?? "no date"
             }
-            let totalPosts = self.store.totalReadPosts(in: date)
+            let totalPosts = self.store.totalReadPosts(in: date ?? Date())
             let format: String
             if totalPosts == 1 {
                 format = "%d post"

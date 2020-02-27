@@ -18,6 +18,7 @@ struct ReadItLaterItem: Identifiable, Codable {
     var description: String?
     var imageURL: URL?
     
+    // swiftlint:disable force_unwrapping
     static var testObject: ReadItLaterItem {
         return ReadItLaterItem(
             link: URL(string: "https://www.swiftbysundell.com/articles/what-makes-code-swifty/")!,
@@ -71,7 +72,7 @@ class ReadItLaterStore: ObservableObject {
     }
     
     func addItemFromExtension(url: URL) {
-        UserDefaults.newItemsToAdd = UserDefaults.newItemsToAdd + [url]
+        UserDefaults.newItemsToAdd += [url]
     }
 
 }

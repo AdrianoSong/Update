@@ -50,12 +50,12 @@ struct Onboarding: View {
             ))
             
         // TODO: Fix rx to use showPopup instead of $viewModel.showPage2Popup
-        case .share(let page, let showPopup, let showSheet):
+        case .share(let page, _, _):
             return OnboardingCard(page: page, content: AnyView (
                 
                 ShareExtensionOnboardingContent(showPopup: $viewModel.showPage2Popup, showSheet: $viewModel.showPage2Sheet)
             ))
-        case .progress(let page, let showBars):
+        case .progress(let page, _):
             return OnboardingCard(page: page, content: AnyView (
                 
                 ProgressOnboardingContent(showBars: $viewModel.showPage3Bars)

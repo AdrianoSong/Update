@@ -60,12 +60,13 @@ struct NavBar: View {
 
     }
     
+    // swiftlint:disable force_unwrapping
     var body: some View {
         
         VStack {
             if self.hideType != nil {
                 HStack {
-                    view(for: self.hideType!)
+                    view(for: self.hideType ?? .close)
                     Spacer()
                 }
                 .padding(.horizontal)

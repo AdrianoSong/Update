@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2937D77C2408406C00DF0DDB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2937D77B2408406B00DF0DDB /* .swiftlint.yml */; };
 		C203DC1A23F89438009030AE /* NeumorphismShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203DC1923F89438009030AE /* NeumorphismShadow.swift */; };
 		C203DC1B23F89438009030AE /* NeumorphismShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203DC1923F89438009030AE /* NeumorphismShadow.swift */; };
 		C203DC1C23F89438009030AE /* NeumorphismShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C203DC1923F89438009030AE /* NeumorphismShadow.swift */; };
@@ -223,6 +224,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2937D77B2408406B00DF0DDB /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C203DC1923F89438009030AE /* NeumorphismShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismShadow.swift; sourceTree = "<group>"; };
 		C203DC1F23F89560009030AE /* NeumorphismButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphismButtonStyle.swift; sourceTree = "<group>"; };
 		C203DC2423F8982D009030AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		C28FD90D23F0913B0054BAD1 = {
 			isa = PBXGroup;
 			children = (
+				2937D77B2408406B00DF0DDB /* .swiftlint.yml */,
 				C28FD91823F0913B0054BAD1 /* Update */,
 				C28FD92F23F0913F0054BAD1 /* UpdateTests */,
 				C28FD93A23F0913F0054BAD1 /* UpdateUITests */,
@@ -594,6 +597,7 @@
 				C28FD91323F0913B0054BAD1 /* Frameworks */,
 				C28FD91423F0913B0054BAD1 /* Resources */,
 				C22D117323F5AA3A009035F3 /* Embed App Extensions */,
+				2937D77D2408408600DF0DDB /* Run Script (SwiftLint) */,
 			);
 			buildRules = (
 			);
@@ -723,6 +727,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2937D77C2408406C00DF0DDB /* .swiftlint.yml in Resources */,
 				C28FD92623F0913F0054BAD1 /* LaunchScreen.storyboard in Resources */,
 				C28FD92323F0913F0054BAD1 /* Preview Assets.xcassets in Resources */,
 				C28FD92023F0913F0054BAD1 /* Assets.xcassets in Resources */,
@@ -744,6 +749,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2937D77D2408408600DF0DDB /* Run Script (SwiftLint) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (SwiftLint)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C22D116423F5AA3A009035F3 /* Sources */ = {

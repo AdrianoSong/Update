@@ -12,6 +12,7 @@ import SDWebImageSwiftUI
 struct ReadItLater: View {    
     @ObservedObject var viewModel: ReadItLaterViewModel
 
+    // swiftlint:disable force_unwrapping
     var body: some View {
         ZStack {
             Color.backgroundNeo
@@ -78,7 +79,7 @@ struct ReadItLaterRow: View {
             .padding(.leading)
             
             VStack(alignment: .leading) {
-                Text(item.title!)
+                Text(item.title ?? "")
                     .font(.headline)
                 Text(item.link.absoluteString)
                     .font(.footnote)

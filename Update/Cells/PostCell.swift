@@ -57,6 +57,7 @@ struct PostCell: View {
     }
 }
 
+// swiftlint:disable force_unwrapping
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
         PostCell(post: Post(title: "Test post title", description: "Test post description", url: URL(string: "https://www.google.com")!))

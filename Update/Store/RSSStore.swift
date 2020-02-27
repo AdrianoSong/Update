@@ -26,6 +26,7 @@ class FeedObject: Codable, Identifiable, ObservableObject {
     
     var lastUpdateDate: Date
     
+    // swiftlint:disable force_unwrapping
     init?(feed: Feed, url: URL) {
         self.url = url
         lastUpdateDate = Date()
@@ -79,6 +80,7 @@ class FeedObject: Codable, Identifiable, ObservableObject {
         lastUpdateDate = Date()
     }
     
+    // swiftlint:disable force_unwrapping
     static var testObject: FeedObject {
         return FeedObject(name: "Test feed",
         url: URL(string: "https://www.google.com")!,
@@ -122,7 +124,7 @@ class Post: Codable, Identifiable, ObservableObject {
         self.title =  atomFeed.title ?? ""
         let description = atomFeed.content?.value ?? ""
         
-        let attributed = try? NSAttributedString(data: description.data(using: .unicode)!, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        let attributed = try? NSAttributedString(data: description.data(using: .unicode) ?? Data(), options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         self.description = attributed?.string ?? ""
         
         if let link = atomFeed.links?.first?.attributes?.href, let url = URL(string: link) {
@@ -142,6 +144,7 @@ class Post: Codable, Identifiable, ObservableObject {
         lastUpdateDate = Date()
     }
     
+    // swiftlint:disable force_unwrapping
     static var testObject: Post {
         return Post(title: "Test post title",
         description: "Test post description",
@@ -263,7 +266,7 @@ class RSSStore: ObservableObject {
     }
     
     func addFeedFromExtension(url: URL) {
-        UserDefaults.newFeedsToAdd = UserDefaults.newFeedsToAdd + [url]
+        UserDefaults.newFeedsToAdd += [url]
     }
     
     func fetchContents(feedURL: URL, handler: @escaping (_ feed: Feed?) -> Void) {

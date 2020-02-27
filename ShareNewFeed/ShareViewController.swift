@@ -23,7 +23,7 @@ class ShareViewController: UIViewController {
         shareFeedViewController.view.translatesAutoresizingMaskIntoConstraints = false
         shareFeedViewController.view.frame = self.view.bounds
         shareFeedViewController.rootView.shouldDismiss = {
-            self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+            self.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
         }
         
         self.view.addSubview(shareFeedViewController.view)
@@ -33,10 +33,10 @@ class ShareViewController: UIViewController {
     
     private func getURL() {
         let extensionItem = extensionContext?.inputItems.first as! NSExtensionItem
-        let itemProvider = extensionItem.attachments!.first!
+        let itemProvider = extensionItem.attachments?.first
         let propertyList = String(kUTTypePropertyList)
-        if itemProvider.hasItemConformingToTypeIdentifier(propertyList) {
-            itemProvider.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, error) -> Void in
+        if itemProvider?.hasItemConformingToTypeIdentifier(propertyList) ?? false {
+            itemProvider?.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, error) -> Void in
                 guard let dictionary = item as? NSDictionary else { return }
                 OperationQueue.main.addOperation {
                     if let results = dictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary,
@@ -59,7 +59,7 @@ class ShareViewController: UIViewController {
             }
 
             for extensionItem in extensionItems {
-                if let itemProviders = extensionItem.attachments as? [NSItemProvider] {
+                if let itemProviders = extensionItem.attachments {
                     for itemProvider in itemProviders {
                         if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
 
